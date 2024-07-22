@@ -18,13 +18,24 @@ import kotlin.coroutines.CoroutineContext
 
 class SupervisorScopeActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySupervisorScopeBinding
+    lateinit var task1Job: Job
+    lateinit var task2Job: Job
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySupervisorScopeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.btnCancelCorotine.setOnClickListener() {
+            //If we want to cancel the coroutine we can able to cancel
+            // By Using Job we can able to monitor the Coroutine
+            task2Job.cancel()
+        }
+
         binding.btnStartDownloading.setOnClickListener() {
             doingTaskInBackGround()
         }
+
+
 
     }
 
@@ -53,7 +64,7 @@ class SupervisorScopeActivity : AppCompatActivity() {
             * SupervisorScope ensures that failures in children don't affect the parent
             * */
             supervisorScope {
-                launch {
+                task1Job = launch {
                     for (i in 1..100) {
                         delay(500)
                         binding.tvTask1.text = "Image 1 Downloading Status is $i"
@@ -64,7 +75,7 @@ class SupervisorScopeActivity : AppCompatActivity() {
 
                 }
 
-                launch {
+                task2Job = launch {
                     for (i in 1..100) {
                         delay(500)
                         binding.tvTask2.text = "Image 2 Downloading Status is $i"
