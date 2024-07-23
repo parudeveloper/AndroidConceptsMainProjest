@@ -8,3 +8,7 @@
             8. suspend function. -> pause & resume
             9. withContect -> runOnUiThread
             10. Asyc.
+
+            Job == > Hangle on a Coroutine 
+            Deferred == > a future will get after coroting complete his job 
+            
