@@ -1,6 +1,12 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    //kotlin("kapt") // Apply the kotlin-kapt plugin
+
+    /*id("com.google.dagger.hilt.android") version "2.44"
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin") version "2.0.0"*/
+
+
 }
 
 android {
@@ -64,6 +70,8 @@ dependencies {
 
     implementation ("androidx.room:room-ktx:2.3.0")
     //kapt "androidx.room:room-compiler:$room_version"
+    //kapt ("com.google.dagger:hilt-android-compiler:2.44")
+
 
     // The Kotlin ones
 
