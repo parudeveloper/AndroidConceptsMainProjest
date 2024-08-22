@@ -34,10 +34,9 @@ class HiltDaggerMainActivity : AppCompatActivity() {
         binding = ActivityHiltDaggerMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        objStudent = Student()
+       // objStudent = Student()
 
 
-        Log.i("ObjReference","${objStudent.hashCode()}")
         if (this::objStudent.isInitialized){
             // Using Hilt DI we are Using Student Object in this class
             binding.tvTextHiltDiText.text = objStudent.getStudentName()
@@ -50,8 +49,7 @@ class HiltDaggerMainActivity : AppCompatActivity() {
         // Note : Object Creation is Very Expensive in our Project
         // This is HardCoded Code
          val student = Student() // It is acting like Dependency
-         binding.tvTextView.text = student.getStudentName()
-
+         binding.tvTextView.text = " Normal Calling ${student.getStudentName()}"
 
 
 
