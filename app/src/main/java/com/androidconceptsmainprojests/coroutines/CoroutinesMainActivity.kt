@@ -1,3 +1,4 @@
+
 package com.androidconceptsmainprojests.coroutines
 
 import android.os.Bundle
@@ -90,6 +91,7 @@ class CoroutinesMainActivity : AppCompatActivity() {
         }
 
         binding.btnAsyncBuilder.setOnClickListener() {
+           // If we have number of tasks and we want to execute parallel then we will use async
             GlobalScope.async(Dispatchers.IO) {
                 task3()
             }

@@ -21,7 +21,8 @@ class HiltDIMainActivityOne : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hilt_dimain_one)
         textView = findViewById(R.id.tvTextHiltDiText)
-        //student = Student()
+
+
         Log.i("ObjReference","${student.hashCode()}")
         val studentName = student.getStudentName()
         textView.text = "$studentName"

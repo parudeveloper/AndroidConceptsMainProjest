@@ -8,10 +8,13 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.androidconceptsmainprojests.R
 import com.androidconceptsmainprojests.databinding.ActivityLateinitLazyExampleBinding
+import java.util.Formatter.BigDecimalLayoutForm
 
-/*
+/* Ref Link : https://medium.com/huawei-developers/kotlin-lateinit-vs-by-lazy-initialization-example-tutorial-c19d84216480
+
 *  Late init is an modifier in kotlin
 * by default if we create an variable we need to declare then and there only
+* We may not want to initialize our values at declaration time
 *
 * late init means we are telling to the compiler, we will use that late init variable later point of time
 * late init should be declare with var
@@ -20,15 +23,34 @@ import com.androidconceptsmainprojests.databinding.ActivityLateinitLazyExampleBi
 *
 * if we create like this --- for example if we not using that variable JVM will not allocate memory for that variable
 * */
+
+/*
+* lazy --> If we access for the first time then only it will create the object after that it will reuse that value again and again
+* This can be particularly useful for performance optimization
+*
+* */
 class LateinitLazyExampleActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLateinitLazyExampleBinding
+
+    val user : User by lazy {
+        Log.e("LateinitLazyExampleActivity", "First time lazy initialization")
+        User("Mallangi")
+
+    }
+// here declaration of lazy
+    // if access for the 1st time then only it will create object
+    private val myUser: User by lazy {
+        print("Lazy initialization")
+        User("Hüseyin")
+    }
 
     lateinit var name: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLateinitLazyExampleBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        lateinitExample()
+        //lateinitExample()
+        lazyInitializationExample()
 
 
     }
@@ -51,4 +73,12 @@ class LateinitLazyExampleActivity : AppCompatActivity() {
         }
         Log.e("LateinitLazyExampleActivity", a)
     }
+
+    fun lazyInitializationExample() {
+        binding.tvClickHere.setOnClickListener() {
+            Log.e("LateinitLazyExampleActivity", user.name)
+        }
+
+    }
 }
+data class User(var name :String)
