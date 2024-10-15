@@ -34,8 +34,6 @@ class HiltDaggerMainActivity : AppCompatActivity() {
         binding = ActivityHiltDaggerMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-       // objStudent = Student()
-
 
         if (this::objStudent.isInitialized){
             // Using Hilt DI we are Using Student Object in this class
