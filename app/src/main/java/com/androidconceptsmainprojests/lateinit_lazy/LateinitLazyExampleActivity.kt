@@ -53,6 +53,7 @@ class LateinitLazyExampleActivity : AppCompatActivity() {
         lazyInitializationExample()
 
 
+
     }
 
     fun lateinitExample() {
